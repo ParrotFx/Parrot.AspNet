@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parrot.AspNet", "Parrot.Mvc\Parrot.AspNet.csproj", "{90502FC0-81A5-46E3-B8C4-DFACC0F2D4EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parrot.AspNet", "Parrot.AspNet\Parrot.AspNet.csproj", "{90502FC0-81A5-46E3-B8C4-DFACC0F2D4EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
