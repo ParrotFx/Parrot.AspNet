@@ -8,8 +8,8 @@
     <ProjectGuid>{90502FC0-81A5-46E3-B8C4-DFACC0F2D4EE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Parrot.Mvc</RootNamespace>
-    <AssemblyName>Parrot.Mvc</AssemblyName>
+    <RootNamespace>Parrot.AspNet</RootNamespace>
+    <AssemblyName>Parrot.AspNet</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Parrot">
+      <HintPath>..\..\..\_references\Parrot.dll</HintPath>
+    </Reference>
+    <Reference Include="Parrot.Renderers">
+      <HintPath>..\..\..\_references\Parrot.Renderers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -57,16 +63,6 @@
     <Compile Include="Renderers\PartialRenderer.cs" />
     <Compile Include="StandardWriterProvider.cs" />
     <Compile Include="TagBuilder.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Parrot.Renderers\Parrot.Renderers.csproj">
-      <Project>{A7348907-BE1E-464D-907B-796A347B8034}</Project>
-      <Name>Parrot.Renderers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Parrot\Parrot.csproj">
-      <Project>{5101087D-966B-403B-911C-4F657AEBF623}</Project>
-      <Name>Parrot</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
