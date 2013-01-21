@@ -1,4 +1,4 @@
-﻿namespace Parrot.Mvc
+﻿namespace Parrot.AspNet
 {
     using System.Web.Mvc;
     using Parrot.Renderers.Infrastructure;

@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Parrot.Mvc
+namespace Parrot.AspNet
 {
     /// <summary>
     /// TODO: Update summary.

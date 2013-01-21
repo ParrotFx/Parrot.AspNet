@@ -5,11 +5,11 @@
 // -----------------------------------------------------------------------
 
 
-namespace Parrot.Mvc
+namespace Parrot.AspNet
 {
     using System.Web.Mvc;
+    using Parrot.AspNet.Renderers;
     using Parrot.Infrastructure;
-    using Parrot.Mvc.Renderers;
     using Parrot.Renderers;
     using Parrot.Renderers.Infrastructure;
 

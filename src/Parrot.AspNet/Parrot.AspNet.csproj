@@ -33,11 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Parrot">
-      <HintPath>..\..\..\_references\Parrot.dll</HintPath>
+    <Reference Include="Parrot, Version=0.0.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Parrot.0.0.6\lib\Parrot.dll</HintPath>
     </Reference>
-    <Reference Include="Parrot.Renderers">
-      <HintPath>..\..\..\_references\Parrot.Renderers.dll</HintPath>
+    <Reference Include="Parrot.Renderers, Version=0.0.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Parrot.Renderers.0.0.6\lib\Parrot.Renderers.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,6 +65,9 @@
     <Compile Include="Renderers\PartialRenderer.cs" />
     <Compile Include="StandardWriterProvider.cs" />
     <Compile Include="TagBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

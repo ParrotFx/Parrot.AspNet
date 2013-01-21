@@ -1,4 +1,4 @@
-﻿namespace Parrot.Mvc.Renderers
+﻿namespace Parrot.AspNet.Renderers
 {
     using System;
     using System.Web;

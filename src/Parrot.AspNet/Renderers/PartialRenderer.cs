@@ -1,8 +1,9 @@
-namespace Parrot.Mvc.Renderers
+namespace Parrot.AspNet.Renderers
 {
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using Parrot.AspNet;
     using Parrot.Infrastructure;
     using Parrot.Nodes;
     using Parrot.Renderers;
