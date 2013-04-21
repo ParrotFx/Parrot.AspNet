@@ -21,6 +21,8 @@ namespace Parrot.AspNet.Renderers
     /// </summary>
     public class LayoutRenderer : HtmlRenderer
     {
+        public const string LayoutChildren = "_LayoutChildren_";
+        
         public LayoutRenderer(IHost host) : base(host)
         {
         }
@@ -61,11 +63,12 @@ namespace Parrot.AspNet.Renderers
                     var document = parrotView.LoadDocument(contents);
 
                     //Create a new DocumentView and DocumentHost
-                    if (!documentHost.ContainsKey("_LayoutChildren_"))
+                    
+                    if (!documentHost.ContainsKey(LayoutChildren))
                     {
-                        documentHost.Add("_LayoutChildren_", new Queue<StatementList>());
+                        documentHost.Add(LayoutChildren, new Queue<StatementList>());
                     }
-                    (documentHost["_LayoutChildren_"] as Queue<StatementList>).Enqueue(statement.Children);
+                    (documentHost[LayoutChildren] as Queue<StatementList>).Enqueue(statement.Children);
 
                     DocumentView view = new DocumentView(Host, rendererFactory, documentHost, document);
 

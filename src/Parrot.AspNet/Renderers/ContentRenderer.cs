@@ -20,7 +20,7 @@ namespace Parrot.AspNet.Renderers
 
         public override void Render(IParrotWriter writer, IRendererFactory rendererFactory, Statement statement, IDictionary<string, object> documentHost, object model)
         {
-            var childrenQueue = documentHost.GetValueOrDefault("_LayoutChildren_") as Queue<StatementList>;
+            var childrenQueue = documentHost.GetValueOrDefault(LayoutRenderer.LayoutChildren) as Queue<StatementList>;
             if (childrenQueue == null)
             {
                 //TODO: replace this with a real exception

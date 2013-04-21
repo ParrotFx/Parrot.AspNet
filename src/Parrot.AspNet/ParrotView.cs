@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
+    using System.Linq;
     using System.Web.Mvc;
     using Parrot.Infrastructure;
     using Parrot.Nodes;
@@ -14,6 +15,12 @@
     {
         private readonly string _viewPath;
         private readonly IHost _host;
+        private const string RequestName = "Request";
+        private const string UserName = "User";
+        private const string ViewContextName = "ViewContext";
+        private const string ControllerContextName = "ControllerContext";
+        private const string ViewBagName = "ViewBag";
+
 
         public ParrotView(IHost host, string viewPath)
         {
@@ -72,6 +79,11 @@
 
             Document document = LoadDocument(template);
 
+            if (document.Errors.Any())
+            {
+                throw new Exception(string.Join("\r\n", document.Errors));
+            }
+
             object model = null;
             if (viewContext != null)
             {
@@ -79,11 +91,14 @@
             }
 
             var documentHost = new Dictionary<string, object>();
-            documentHost.Add("Model", model);
+            documentHost.Add(DocumentView.ModelName, model);
             if (viewContext != null)
             {
-                documentHost.Add("Request", viewContext.RequestContext.HttpContext.Request);
-                documentHost.Add("User", viewContext.RequestContext.HttpContext.User);
+                documentHost.Add(RequestName, viewContext.RequestContext.HttpContext.Request);
+                documentHost.Add(UserName, viewContext.RequestContext.HttpContext.User);
+                documentHost.Add(ViewContextName, viewContext);
+                documentHost.Add(ControllerContextName, viewContext.Controller.ControllerContext);
+                documentHost.Add(ViewBagName, viewContext.ViewData);
             }
 
             //need to create a custom viewhost

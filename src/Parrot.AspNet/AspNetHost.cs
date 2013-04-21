@@ -42,7 +42,9 @@ namespace Parrot.AspNet
                     new InputRenderer(this),
                     new ConditionalRenderer(this),
                     new ListRenderer(this),
-                    new SelfClosingRenderer(this)
+                    new SelfClosingRenderer(this),
+                    new ActionRenderer(this), 
+                    new DefineRenderer(this), 
                 });
             PathResolver = new PathResolver();
         }

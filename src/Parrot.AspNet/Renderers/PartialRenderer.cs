@@ -28,7 +28,8 @@ namespace Parrot.AspNet.Renderers
             {
                 //assume only the first is the path
                 //second is the argument (model)
-                layout = statement.Parameters[0].Value;
+                //TODO: fix this
+                layout = statement.Parameters[0].Value.Replace("\"", "");
             }
             else
             {

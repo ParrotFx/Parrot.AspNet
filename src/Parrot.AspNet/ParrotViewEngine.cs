@@ -9,7 +9,16 @@
 
         private readonly IHost _host;
 
-        public ParrotViewEngine() : this(new AspNetHost(new StandardWriterProvider())) { }
+        public ParrotViewEngine()
+        {
+            var host = new AspNetHost(new StandardWriterProvider());
+
+            //set the host view engine to this
+            //this needs to be refactored
+            host.ViewEngine = this;
+
+            _host = host;
+        }
 
         public ParrotViewEngine(IHost host)
         {
