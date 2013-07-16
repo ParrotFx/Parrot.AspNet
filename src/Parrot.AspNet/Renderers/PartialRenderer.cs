@@ -1,5 +1,6 @@
 namespace Parrot.AspNet.Renderers
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -11,7 +12,8 @@ namespace Parrot.AspNet.Renderers
 
     public class PartialRenderer : HtmlRenderer
     {
-        public PartialRenderer(IHost host) : base(host)
+        public PartialRenderer(IHost host)
+            : base(host)
         {
         }
 
@@ -23,32 +25,22 @@ namespace Parrot.AspNet.Renderers
         public override void Render(IParrotWriter writer, IRendererFactory rendererFactory, Statement statement, IDictionary<string, object> documentHost, object model)
         {
             //get the parameter
-            string layout;
-            if (statement.Parameters != null && statement.Parameters.Any())
+            var partial = GetLocalModel(documentHost, statement, model) as string;
+            if (string.IsNullOrEmpty(partial))
             {
-                //assume only the first is the path
-                //second is the argument (model)
-                //TODO: fix this
-                layout = statement.Parameters[0].Value.Replace("\"", "");
+                throw new ArgumentNullException("partial");
             }
-            else
-            {
-                layout = "_layout";
-            }
-
             //ok...we need to load the layoutpage
             //then pass the node's children into the layout page
             //then return the result
             var engine = (Host as AspNetHost).ViewEngine;
-            var result = engine.FindView(null, layout, null, false);
+            var result = engine.FindView(null, partial, null, false);
             if (result != null)
             {
                 var parrotView = (result.View as ParrotView);
                 using (var stream = parrotView.LoadStream())
                 {
-                    string contents = new StreamReader(stream).ReadToEnd();
-
-                    var document = parrotView.LoadDocument(contents);
+                    var document = parrotView.LoadDocument(stream);
 
                     DocumentView view = new DocumentView(Host, rendererFactory, documentHost, document);
 

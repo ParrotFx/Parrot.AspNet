@@ -61,13 +61,18 @@ namespace Parrot.AspNet.Renderers
         public override void Render(IParrotWriter writer, IRendererFactory rendererFactory, Statement statement, IDictionary<string, object> documentHost, object model)
         {
             //get the parameter
-            List<object> parameters = new List<object>() { writer, documentHost };
+            List<object> parameters = new List<object>()
+                {
+                    writer, 
+                    documentHost
+                };
+
             if (statement.Parameters != null && statement.Parameters.Any())
             {
                 //assume only the first is the path
                 //second is the argument (model)
                 //TODO: fix this
-                parameters.AddRange(statement.Parameters.Select(p => p.Value.Replace("\"", "")).ToArray());
+                parameters.AddRange((List<object>)GetLocalModel(documentHost, statement, model));
             }
             else
             {

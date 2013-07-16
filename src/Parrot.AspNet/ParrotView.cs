@@ -41,9 +41,7 @@
             //View contents
             using (var stream = LoadStream())
             {
-                string contents = new StreamReader(stream).ReadToEnd();
-
-                contents = Parse(viewContext, contents);
+                var contents = Parse(viewContext, stream);
 
                 string output = contents;
 
@@ -60,7 +58,7 @@
             writer.Write(parrotWriter.Result());
         }
 
-        internal Document LoadDocument(string template)
+        internal Document LoadDocument(Stream template)
         {
             Parser.Parser parser = new Parser.Parser();
             Document document;
@@ -73,7 +71,7 @@
             throw new Exception("Unable to parse: ");
         }
 
-        private string Parse(ViewContext viewContext, string template)
+        private string Parse(ViewContext viewContext, Stream template)
         {
             Stopwatch watch = Stopwatch.StartNew();
 

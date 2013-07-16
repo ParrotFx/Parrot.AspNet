@@ -1,4 +1,4 @@
-﻿[assembly: WebActivator.PreApplicationStartMethod(typeof($rootnamespace$.App_Start.ParrotConfig), "Start")]
+﻿[assembly: WebActivatorEx.PreApplicationStartMethod(typeof($rootnamespace$.App_Start.ParrotConfig), "Start")]
 namespace $rootnamespace$.App_Start
 {
     using Parrot.AspNet;

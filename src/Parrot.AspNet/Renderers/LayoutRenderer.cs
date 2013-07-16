@@ -40,7 +40,7 @@ namespace Parrot.AspNet.Renderers
                 Type modelType = model != null ? model.GetType() : null;
                 var modelValueProvider = Host.ModelValueProviderFactory.Get(modelType);
 
-                var parameterLayout = GetLocalModelValue(documentHost, statement, modelValueProvider, model) ?? "_layout";
+                var parameterLayout = GetLocalModel(documentHost, statement, model) ?? "_layout";
 
                 //assume only the first is the path
                 //second is the argument (model)
@@ -58,9 +58,7 @@ namespace Parrot.AspNet.Renderers
                 var parrotView = (result.View as ParrotView);
                 using (var stream = parrotView.LoadStream())
                 {
-                    string contents = new StreamReader(stream).ReadToEnd();
-
-                    var document = parrotView.LoadDocument(contents);
+                    var document = parrotView.LoadDocument(stream);
 
                     //Create a new DocumentView and DocumentHost
                     
